@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ABVolumeControl_Example' do
+  pod 'ABVolumeControl', :path => '../'
+
+  target 'ABVolumeControl_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
