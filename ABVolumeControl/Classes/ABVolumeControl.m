@@ -145,6 +145,10 @@
             [self setVolumeControlStyle:self.volumeControlStyle];
         }
     }
+    
+    if ([self.volumeDelegate respondsToSelector:@selector(control:didChangeVolume:)]) {
+        [self.volumeDelegate control:self didChangeVolume:self.volumeSlider.value];
+    }
 }
 
 - (void) updateControlForVolumeChange {
@@ -160,7 +164,7 @@
         
         CGFloat previousWidth = volumeBarFrame.size.width;
         
-        CGFloat newWidth = (self.volumeSlider.value/1.0f) * viewWidth;
+        CGFloat newWidth = self.volumeSlider.value * viewWidth;
         volumeBarFrame.size = CGSizeMake(newWidth, 2);
         
         [self updateVolumeBarColor];
@@ -193,7 +197,7 @@
         
         CGFloat previousWidth = volumeBarFrame.size.width;
         
-        CGFloat newWidth = (self.volumeSlider.value/1.0f) * (viewWidth - 24.0f);
+        CGFloat newWidth = self.volumeSlider.value * (viewWidth - 24.0f);
         
         volumeBarFrame.size = CGSizeMake(newWidth, 2.0f);
         
@@ -307,6 +311,17 @@
     return [self colorWithHexString:@"262626"];
 }
 
++ (void) setVolumeLevel:(float)volumeLevel {
+    if (volumeLevel < 0) {
+        volumeLevel = 0;
+    }
+    else if (volumeLevel > 1) {
+        volumeLevel = 1;
+    }
+    
+    [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
+}
+
 - (BOOL)notNull:(id)object {
     if ([object isEqual:[NSNull null]] || [object isKindOfClass:[NSNull class]] || object == nil) {
         return false;
@@ -351,5 +366,7 @@
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
 }
+
+
 
 @end

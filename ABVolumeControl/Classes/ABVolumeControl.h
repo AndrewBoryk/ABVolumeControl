@@ -23,7 +23,12 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
     ABVolumeControlStyleCustom,
 };
 
+@protocol ABVolumeControlDelegate;
+
 @interface ABVolumeControl : NSObject
+
+/// Delegate for ABVolumeControl
+@property (weak, nonatomic) id<ABVolumeControlDelegate> volumeDelegate;
 
 /// Determines whether volume bar should be shown
 @property BOOL dontShowVolumeBar;
@@ -66,5 +71,17 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 
 /// Updates color for volumebar
 - (void) updateVolumeBarColor;
+
+/// Setting the volume for the ABVolumeControl and the user's device
++ (void) setVolumeLevel:(float)volumeLevel;
+
+@end
+
+@protocol ABVolumeControlDelegate <NSObject>
+
+@optional
+
+/// Volume did change to a different percentage
+- (void)control:(ABVolumeControl *)control didChangeVolume:(CGFloat)volumePercentage;
 
 @end

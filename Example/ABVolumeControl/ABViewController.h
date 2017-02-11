@@ -25,6 +25,9 @@
 /// Button to set volumeControl style to ABVolumeControlStyleCustom
 @property (strong, nonatomic) IBOutlet UIButton *customStyleButton;
 
+/// Custom slider for volumeControl
+@property (strong, nonatomic) IBOutlet UISlider *customVolumeSlider;
+
 /// Switch to adjust theme
 @property (strong, nonatomic) IBOutlet UISegmentedControl *themeSwitch;
 
@@ -42,6 +45,9 @@
 
 /// Set volumeControl style to ABVolumeControlStyleCustom
 - (IBAction)customStyleAction:(id)sender;
+
+/// Custom volume slider changed
+- (IBAction)customVolumeSliderChanged:(id)sender;
 
 /// Switched themes for ABVolumeControl
 - (IBAction)themeSwitchChanged:(id)sender;

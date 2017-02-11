@@ -9,7 +9,7 @@
 #import "ABViewController.h"
 #import <ABVolumeControl/ABVolumeControl.h>
 
-@interface ABViewController ()
+@interface ABViewController () <ABVolumeControlDelegate>
 
 @end
 
@@ -38,6 +38,9 @@
     
     // Custom Light theme
     [[ABVolumeControl sharedManager] setDefaultLightColor:[self colorWithHexString:@"FCFCFC"]];
+    
+    // Set delegate for the volume control to be used for custom volume sliders
+    [[ABVolumeControl sharedManager] setVolumeDelegate:self];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -59,6 +62,9 @@
 - (IBAction)removeStyleAction:(id)sender {
     // One can remove the custom ABVolumeControl by setting the volumeControlStyle to ABVolumeControlStyleNone.
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleNone];
+    
+    self.customVolumeSlider.hidden = YES;
+    self.customStyleButton.hidden = NO;
 }
 
 - (IBAction)minimalStyleAction:(id)sender {
@@ -70,6 +76,9 @@
     
     // Set the ABVolumeControl style to Minimal
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleMinimal];
+    
+    self.customVolumeSlider.hidden = YES;
+    self.customStyleButton.hidden = NO;
 }
 
 - (IBAction)statusBarStyleAction:(id)sender {
@@ -81,11 +90,22 @@
     
     // Set the ABVolumeControl style to Status Bar
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleStatusBar];
+    
+    self.customVolumeSlider.hidden = YES;
+    self.customStyleButton.hidden = NO;
 }
 
 - (IBAction)customStyleAction:(id)sender {
     // Set the ABVolumeControl style to Custom
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleCustom];
+    
+    self.customStyleButton.hidden = YES;
+    self.customVolumeSlider.hidden = NO;
+    
+}
+
+- (IBAction)customVolumeSliderChanged:(id)sender {
+    [ABVolumeControl setVolumeLevel:self.customVolumeSlider.value];
 }
 
 - (IBAction)themeSwitchChanged:(id)sender {
@@ -101,6 +121,12 @@
     }
 }
 
+#pragma mark - ABVolumeControlDelegate methods
+- (void) control:(ABVolumeControl *)control didChangeVolume:(CGFloat)volumePercentage {
+    [self.customVolumeSlider setValue:volumePercentage];
+}
+
+#pragma mark - Helper Methods
 - (UIColor*)colorWithHexString:(NSString*)hex
 {
     NSString *cString = [hex uppercaseString];
