@@ -16,6 +16,11 @@ typedef NS_ENUM(NSInteger, ABVolumeControlTheme) {
     ABVolumeControlDarkTheme,
 };
 
+typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
+    ABVolumeControlStyleNone,
+    ABVolumeControlStyleMinimal,
+};
+
 @interface ABVolumeControl : NSObject
 
 /// Determines whether volume bar should be shown
@@ -44,6 +49,9 @@ typedef NS_ENUM(NSInteger, ABVolumeControlTheme) {
 
 /// Theme for the ABVolumeControl (Light or Dark)
 @property (nonatomic) ABVolumeControlTheme controlTheme;
+
+/// Style of ABVolumeControl desired for the user's interface
+@property (nonatomic) ABVolumeControlStyle volumeControlStyle;
 
 /// Shared Manager for Volume Manager
 + (id)sharedManager;

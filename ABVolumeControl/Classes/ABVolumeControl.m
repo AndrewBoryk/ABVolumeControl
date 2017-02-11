@@ -24,10 +24,40 @@
     if (self = [super init]) {
         // Initialize caches
         
-        UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
-        [currentWindow makeKeyAndVisible];
-        CGRect windowFrame = currentWindow.bounds;
-        CGFloat viewWidth = windowFrame.size.width;
+        self.mpVolumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-50, -50, 0, 0)];
+        
+        [[self.mpVolumeView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj isKindOfClass:[UISlider class]]) {
+                self.volumeSlider = obj;
+                *stop = YES;
+            }
+        }];
+        
+        // Notification when volume is changed
+        [self.volumeSlider addTarget:self action:@selector(handleVolumeChanged:) forControlEvents:UIControlEventValueChanged];
+        
+    }
+    return self;
+}
+
+- (void) setVolumeControlStyle:(ABVolumeControlStyle)volumeControlStyle {
+    if ([self notNull:self.volumeBar]) {
+        [self.volumeBar removeFromSuperview];
+        self.volumeBar = nil;
+    }
+    
+    if ([self notNull:self.volumeBackground]) {
+        [self.volumeBackground removeFromSuperview];
+        self.volumeBackground = nil;
+    }
+    
+    UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
+    [currentWindow makeKeyAndVisible];
+    CGRect windowFrame = currentWindow.bounds;
+    CGFloat viewWidth = windowFrame.size.width;
+    
+    if (volumeControlStyle == ABVolumeControlStyleMinimal) {
+        
         self.volumeBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 2)];
         
         self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
@@ -41,39 +71,21 @@
         
         self.volumeBar.clipsToBounds = NO;
         self.volumeBar.layer.masksToBounds = NO;
-        
         self.volumeBar.layer.shadowColor = [UIColor blackColor].CGColor;
         self.volumeBar.layer.shadowOffset = CGSizeMake(0, 0);
         self.volumeBar.layer.shadowOpacity = 0.5f;
         self.volumeBar.layer.shadowRadius = 1.0f;
         self.volumeBar.alpha = 0;
         
-        self.mpVolumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(-50, -50, 0, 0)];
-        
-        [[self.mpVolumeView subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if ([obj isKindOfClass:[UISlider class]]) {
-                self.volumeSlider = obj;
-                *stop = YES;
-            }
-        }];
-        
-        // Notification when volume is changed
-        [self.volumeSlider addTarget:self action:@selector(handleVolumeChanged:) forControlEvents:UIControlEventValueChanged];
-        
         [currentWindow addSubview:self.volumeBackground];
         [currentWindow addSubview:self.volumeBar];
         
-        NSLog(@"MPVolumeView %@", self.mpVolumeView);
-        NSLog(@"Current Window %@", currentWindow);
         
         if (self.mpVolumeView && currentWindow) {
             [currentWindow addSubview:self.mpVolumeView];
         }
-        
     }
-    return self;
 }
-
 - (void)handleVolumeChanged:(id)sender
 {
     
