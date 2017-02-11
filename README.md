@@ -12,7 +12,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Screenshots
 
-![alt tag](ABVolumeControlScreenshot.gif)
+<kbd>
+  <img src="https://raw.githubusercontent.com/AndrewBoryk/ABVolumeControl/master/ABVolumeControlScreenshot.gif">
+</kbd>
 
 ## Description
 
