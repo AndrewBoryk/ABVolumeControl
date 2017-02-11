@@ -1,0 +1,16 @@
+PODS:
+  - ABVolumeControl (0.1.0)
+
+DEPENDENCIES:
+  - ABVolumeControl (from `../`)
+
+EXTERNAL SOURCES:
+  ABVolumeControl:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ABVolumeControl: 8498f5d3aa370060292a4e874ae15219759fcc0a
+
+PODFILE CHECKSUM: bc4d0fb615efb604eb8d91cd503bfe2f2eba1235
+
+COCOAPODS: 1.2.0

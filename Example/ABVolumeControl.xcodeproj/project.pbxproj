@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14326678191AF733DA90A53B /* Pods_ABVolumeControl_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FBC18B4FE2AF6F2C52A495 /* Pods_ABVolumeControl_Tests.framework */; };
+		455642051E4F79E3009A4780 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455642041E4F79E3009A4780 /* MediaPlayer.framework */; };
+		455642071E4F79EA009A4780 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455642061E4F79EA009A4780 /* QuartzCore.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -38,10 +40,12 @@
 
 /* Begin PBXFileReference section */
 		104CD3CDBAC48579C69AEC09 /* Pods-ABVolumeControl_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABVolumeControl_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABVolumeControl_Tests/Pods-ABVolumeControl_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		1BC1D758034BE88EF65D05BF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		1BC1D758034BE88EF65D05BF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2FEF81EFDE01C0AABEFA5459 /* Pods-ABVolumeControl_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABVolumeControl_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABVolumeControl_Tests/Pods-ABVolumeControl_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		33A885F27750FE6E86EF7887 /* Pods-ABVolumeControl_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABVolumeControl_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ABVolumeControl_Example/Pods-ABVolumeControl_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		507508663881ACFE939AB39C /* ABVolumeControl.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ABVolumeControl.podspec; path = ../ABVolumeControl.podspec; sourceTree = "<group>"; };
+		455642041E4F79E3009A4780 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		455642061E4F79EA009A4780 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		507508663881ACFE939AB39C /* ABVolumeControl.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ABVolumeControl.podspec; path = ../ABVolumeControl.podspec; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* ABVolumeControl_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ABVolumeControl_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,7 +68,7 @@
 		64391358BF5B8A1C2B990765 /* Pods-ABVolumeControl_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ABVolumeControl_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-ABVolumeControl_Example/Pods-ABVolumeControl_Example.release.xcconfig"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		97FCFB533934031E18ACECEC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		97FCFB533934031E18ACECEC /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9EA81426BFB2484BAC5B5504 /* Pods_ABVolumeControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABVolumeControl_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1FBC18B4FE2AF6F2C52A495 /* Pods_ABVolumeControl_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ABVolumeControl_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -74,6 +78,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				455642071E4F79EA009A4780 /* QuartzCore.framework in Frameworks */,
+				455642051E4F79E3009A4780 /* MediaPlayer.framework in Frameworks */,
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
@@ -119,6 +125,8 @@
 		6003F58C195388D20070C39A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				455642061E4F79EA009A4780 /* QuartzCore.framework */,
+				455642041E4F79E3009A4780 /* MediaPlayer.framework */,
 				6003F58D195388D20070C39A /* Foundation.framework */,
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
@@ -250,6 +258,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = andrewboryk;
 				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = EM32C32CW4;
+					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
 					};
@@ -524,6 +535,7 @@
 			baseConfigurationReference = 33A885F27750FE6E86EF7887 /* Pods-ABVolumeControl_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EM32C32CW4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABVolumeControl/ABVolumeControl-Prefix.pch";
 				INFOPLIST_FILE = "ABVolumeControl/ABVolumeControl-Info.plist";
@@ -539,6 +551,7 @@
 			baseConfigurationReference = 64391358BF5B8A1C2B990765 /* Pods-ABVolumeControl_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = EM32C32CW4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ABVolumeControl/ABVolumeControl-Prefix.pch";
 				INFOPLIST_FILE = "ABVolumeControl/ABVolumeControl-Info.plist";

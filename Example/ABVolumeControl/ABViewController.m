@@ -7,6 +7,7 @@
 //
 
 #import "ABViewController.h"
+#import <ABVolumeControl/ABVolumeControl.h>
 
 @interface ABViewController ()
 
@@ -17,9 +18,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+    [[ABVolumeControl sharedManager] showVolumeBar];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -1,0 +1,6 @@
+framework module Pods_ABVolumeControl_Example {
+  umbrella header "Pods-ABVolumeControl_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

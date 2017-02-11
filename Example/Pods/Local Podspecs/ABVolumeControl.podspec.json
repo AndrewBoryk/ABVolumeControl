@@ -1,0 +1,22 @@
+{
+  "name": "ABVolumeControl",
+  "version": "0.1.0",
+  "summary": "A short description of ABVolumeControl.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/andrewboryk/ABVolumeControl",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "andrewboryk": "aboryk@mercymavericks.edu"
+  },
+  "source": {
+    "git": "https://github.com/andrewboryk/ABVolumeControl.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ABVolumeControl/Classes/**/*"
+}
