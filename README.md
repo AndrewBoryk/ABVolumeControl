@@ -37,7 +37,7 @@ pod "ABVolumeControl"
 
 ## Author
 
-andrewboryk, aboryk@mercymavericks.edu
+andrewboryk, andrewcboryk@gmail.com
 
 ## License
 
