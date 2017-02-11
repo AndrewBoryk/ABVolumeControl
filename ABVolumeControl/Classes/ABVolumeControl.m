@@ -41,6 +41,8 @@
 }
 
 - (void) setVolumeControlStyle:(ABVolumeControlStyle)volumeControlStyle {
+    _volumeControlStyle = volumeControlStyle;
+    
     if ([self notNull:self.volumeBar]) {
         [self.volumeBar removeFromSuperview];
         self.volumeBar = nil;
@@ -58,17 +60,13 @@
     
     if (volumeControlStyle == ABVolumeControlStyleMinimal) {
         
+        // Initialize volumeBackground
         self.volumeBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 2)];
-        
         self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
         self.volumeBackground.alpha = 0;
         
+        // Initialize volumeBar
         self.volumeBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 2)];
-        
-        self.controlTheme = ABVolumeControlDarkTheme;
-        
-        [self updateVolumeBarColor];
-        
         self.volumeBar.clipsToBounds = NO;
         self.volumeBar.layer.masksToBounds = NO;
         self.volumeBar.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -77,9 +75,13 @@
         self.volumeBar.layer.shadowRadius = 1.0f;
         self.volumeBar.alpha = 0;
         
+        // Set default theme
+        self.controlTheme = ABVolumeControlDarkTheme;
+        [self updateVolumeBarColor];
+        
+        // Add views to currentWindow
         [currentWindow addSubview:self.volumeBackground];
         [currentWindow addSubview:self.volumeBar];
-        
         
         if (self.mpVolumeView && currentWindow) {
             [currentWindow addSubview:self.mpVolumeView];
@@ -88,50 +90,67 @@
 }
 - (void)handleVolumeChanged:(id)sender
 {
-    
-    // Handles a change in volume, and adjusts the width of the volumeBar accordingly
-    
-    //    [Utils printString:[NSString stringWithFormat:@"%s - %f", __PRETTY_FUNCTION__, volumeSlider.value]];
-    
     // Volume changed, show volumeBar
     
-    UIWindow *mainWinow = [UIApplication sharedApplication].keyWindow;
-    CGRect windowFrame = mainWinow.bounds;
+    UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
+    [mainWindow makeKeyAndVisible];
+    
+    if ([self notNull:mainWindow]) {
+        if ([self notNull: self.volumeBar] && [self notNull:self.volumeBackground]) {
+            if ([mainWindow.subviews containsObject:self.volumeBar] && [mainWindow.subviews containsObject: self.volumeBackground]) {
+                [self updateControlForVolumeChange];
+            }
+            else {
+                [self setVolumeControlStyle:self.volumeControlStyle];
+            }
+        }
+        else {
+            [self setVolumeControlStyle:self.volumeControlStyle];
+        }
+    }
+}
+
+- (void) updateControlForVolumeChange {
+    UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
+    [mainWindow makeKeyAndVisible];
+    CGRect windowFrame = mainWindow.bounds;
     CGFloat viewWidth = windowFrame.size.width;
-    self.volumeBackground.frame = CGRectMake(0, 0, viewWidth, 2);
     
-    CGRect volumeBarFrame = self.volumeBar.frame;
-    
-    CGFloat previousWidth = volumeBarFrame.size.width;
-    
-    CGFloat newWidth = (self.volumeSlider.value/1.0f) * viewWidth;
-    
-    newWidth = (self.volumeSlider.value/1.0f) * viewWidth;
-    volumeBarFrame.size = CGSizeMake(newWidth, 2);
-    
-    [self updateVolumeBarColor];
-    
-    self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
-    
-    if ((newWidth != previousWidth || newWidth >= viewWidth || newWidth <= 0) && !self.dontShowVolumeBar) {
+    if (self.volumeControlStyle == ABVolumeControlStyleMinimal) {
+        self.volumeBackground.frame = CGRectMake(0, 0, viewWidth, 2);
         
-        [UIView animateWithDuration:0.35f animations:^{
-            self.volumeBar.frame = volumeBarFrame;
-            self.volumeBar.alpha = 0.75f;
-            self.volumeBackground.alpha = 1.0f;
+        CGRect volumeBarFrame = self.volumeBar.frame;
+        
+        CGFloat previousWidth = volumeBarFrame.size.width;
+        
+        CGFloat newWidth = (self.volumeSlider.value/1.0f) * viewWidth;
+        
+        newWidth = (self.volumeSlider.value/1.0f) * viewWidth;
+        volumeBarFrame.size = CGSizeMake(newWidth, 2);
+        
+        [self updateVolumeBarColor];
+        
+        self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
+        
+        if ((newWidth != previousWidth || newWidth >= viewWidth || newWidth <= 0) && !self.dontShowVolumeBar) {
             
-        }];
-        
-        [self.volumeTimer invalidate];
-        self.volumeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(volumeDone) userInfo:nil repeats:NO];
+            [UIView animateWithDuration:0.35f animations:^{
+                self.volumeBar.frame = volumeBarFrame;
+                self.volumeBar.alpha = 0.75f;
+                self.volumeBackground.alpha = 1.0f;
+                
+            }];
+            
+            [self.volumeTimer invalidate];
+            self.volumeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(volumeDone) userInfo:nil repeats:NO];
+        }
+        else {
+            
+            self.volumeBar.alpha = 0;
+            self.volumeBackground.alpha = 0;
+            self.volumeBar.frame = volumeBarFrame;
+        }
     }
-    else {
-        
-        self.volumeBar.alpha = 0;
-        self.volumeBackground.alpha = 0;
-        self.volumeBar.frame = volumeBarFrame;
-    }
-    
 }
 
 - (void) dontShowVolumebar {

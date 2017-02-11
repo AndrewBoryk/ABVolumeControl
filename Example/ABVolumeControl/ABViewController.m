@@ -19,10 +19,12 @@
 {
     [super viewDidLoad];
     
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     
     // Intialize the ABVolumeControl with a style, without setting the style, there will be no visible ABVolumeControl. In addition, one can remove the custom ABVolumeControl by setting the volumeControlStyle to ABVolumeControlStyleNone.
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleNone];
@@ -50,15 +52,11 @@
 - (IBAction)changeThemeAction:(id)sender {
     if ([[ABVolumeControl sharedManager] controlTheme] == ABVolumeControlDarkTheme) {
         [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlLightTheme];
-        self.view.backgroundColor = [UIColor blackColor];
         [self.changeThemeButton setTitle:@"Set Dark Theme" forState:UIControlStateNormal];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     }
     else if ([[ABVolumeControl sharedManager] controlTheme] == ABVolumeControlLightTheme) {
         [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlDarkTheme];
-        self.view.backgroundColor = [UIColor whiteColor];
         [self.changeThemeButton setTitle:@"Set Light Theme" forState:UIControlStateNormal];
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     }
 }
 
