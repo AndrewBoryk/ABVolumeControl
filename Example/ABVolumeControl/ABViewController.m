@@ -58,6 +58,31 @@
         [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlDarkTheme];
         [self.changeThemeButton setTitle:@"Set Light Theme" forState:UIControlStateNormal];
     }
+    
+}
+
+- (IBAction)minimalStyleAction:(id)sender {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    
+    [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleMinimal];
+    self.view.backgroundColor = [self colorWithHexString:@"111111"];
+    
+    [self.changeThemeButton setTitleColor:[self colorWithHexString:@"FCFCFC"] forState:UIControlStateNormal];
+    [self.minimalStyleButton setTitleColor:[self colorWithHexString:@"FCFCFC"] forState:UIControlStateNormal];
+    [self.statusBarStyleButton setTitleColor:[self colorWithHexString:@"FCFCFC"] forState:UIControlStateNormal];
+    
+}
+
+- (IBAction)statusBarStyleAction:(id)sender {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    
+    [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleStatusBar];
+    self.view.backgroundColor = [self colorWithHexString:@"FCFCFC"];
+    
+    [self.changeThemeButton setTitleColor:[self colorWithHexString:@"111111"] forState:UIControlStateNormal];
+    [self.minimalStyleButton setTitleColor:[self colorWithHexString:@"111111"] forState:UIControlStateNormal];
+    [self.statusBarStyleButton setTitleColor:[self colorWithHexString:@"111111"] forState:UIControlStateNormal];
+    
 }
 
 - (UIColor*)colorWithHexString:(NSString*)hex

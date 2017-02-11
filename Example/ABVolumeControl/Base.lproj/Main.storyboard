@@ -22,26 +22,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTe-MO-nqp">
-                                <rect key="frame" x="127" y="318.5" width="120" height="30"/>
+                                <rect key="frame" x="112" y="281" width="150" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="PeF-tH-flh"/>
+                                    <constraint firstAttribute="width" constant="150" id="PeF-tH-flh"/>
                                 </constraints>
-                                <state key="normal" title="Set Light Style">
+                                <state key="normal" title="Set Light Theme">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="changeThemeAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="4Zq-az-40Z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-aW-UTE">
+                                <rect key="frame" x="112" y="318.5" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bLe-7X-l7Z"/>
+                                </constraints>
+                                <state key="normal" title="Set Minimal Style">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="minimalStyleAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="FhY-5K-Egr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BnV-Kh-jah">
+                                <rect key="frame" x="112.5" y="356.5" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="aGv-68-hek"/>
+                                </constraints>
+                                <state key="normal" title="Set Status Bar Style">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="statusBarStyleAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="Zvq-8i-b4C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jTe-MO-nqp" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="PJJ-cd-nh9"/>
+                            <constraint firstItem="jvI-aW-UTE" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="F7w-PO-XXv"/>
+                            <constraint firstItem="BnV-Kh-jah" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="MSY-K8-cJj"/>
                             <constraint firstItem="jTe-MO-nqp" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="WbD-Uz-Gl3"/>
+                            <constraint firstItem="jvI-aW-UTE" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Y4V-h9-Gvj"/>
+                            <constraint firstItem="BnV-Kh-jah" firstAttribute="top" secondItem="jvI-aW-UTE" secondAttribute="bottom" constant="8" id="cyn-I9-X8L"/>
+                            <constraint firstItem="jvI-aW-UTE" firstAttribute="top" secondItem="jTe-MO-nqp" secondAttribute="bottom" constant="7.5" id="pIA-bK-iaP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="changeThemeButton" destination="jTe-MO-nqp" id="Vmp-ZO-PWa"/>
+                        <outlet property="minimalStyleButton" destination="jvI-aW-UTE" id="u6e-vY-s5O"/>
+                        <outlet property="statusBarStyleButton" destination="BnV-Kh-jah" id="Hwe-2W-hNa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -87,6 +87,35 @@
             [currentWindow addSubview:self.mpVolumeView];
         }
     }
+    else if (volumeControlStyle == ABVolumeControlStyleStatusBar) {
+        // Initialize volumeBackground
+        self.volumeBackground = [[UIView alloc] initWithFrame:CGRectMake(12.0f, -9.0f, viewWidth-24.0f, 2.0f)];
+        self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
+        self.volumeBackground.alpha = 1.0f;
+        
+        // Initialize volumeBar
+        self.volumeBar = [[UIView alloc] initWithFrame:CGRectMake(12.0f, -9.0f, viewWidth-24.0f, 2.0f)];
+        self.volumeBar.clipsToBounds = NO;
+        self.volumeBar.layer.masksToBounds = NO;
+        self.volumeBar.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.volumeBar.layer.shadowOffset = CGSizeMake(0, 0);
+        self.volumeBar.layer.shadowOpacity = 0.5f;
+        self.volumeBar.layer.shadowRadius = 1.0f;
+        self.volumeBar.alpha = 1.0f;
+        
+        // Set default theme
+        self.controlTheme = ABVolumeControlDarkTheme;
+        [self updateVolumeBarColor];
+        
+        // Add views to currentWindow
+        [currentWindow addSubview:self.volumeBackground];
+        [currentWindow addSubview:self.volumeBar];
+        
+        if (self.mpVolumeView && currentWindow) {
+            [currentWindow addSubview:self.mpVolumeView];
+        }
+    }
+
 }
 - (void)handleVolumeChanged:(id)sender
 {
@@ -124,13 +153,9 @@
         CGFloat previousWidth = volumeBarFrame.size.width;
         
         CGFloat newWidth = (self.volumeSlider.value/1.0f) * viewWidth;
-        
-        newWidth = (self.volumeSlider.value/1.0f) * viewWidth;
         volumeBarFrame.size = CGSizeMake(newWidth, 2);
         
         [self updateVolumeBarColor];
-        
-        self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
         
         if ((newWidth != previousWidth || newWidth >= viewWidth || newWidth <= 0) && !self.dontShowVolumeBar) {
             
@@ -151,6 +176,48 @@
             self.volumeBar.frame = volumeBarFrame;
         }
     }
+    else if (self.volumeControlStyle == ABVolumeControlStyleStatusBar) {
+        
+        self.volumeBackground.frame = CGRectMake(12.0f, self.volumeBackground.frame.origin.y, viewWidth-24.0f, 2.0f);
+        
+        CGRect volumeBarFrame = self.volumeBar.frame;
+        CGRect volumeBackgroundFrame = self.volumeBackground.frame;
+        
+        CGFloat previousWidth = volumeBarFrame.size.width;
+        
+        CGFloat newWidth = (self.volumeSlider.value/1.0f) * (viewWidth - 24.0f);
+        
+        volumeBarFrame.size = CGSizeMake(newWidth, 2.0f);
+        
+        self.volumeBar.alpha = 1.0f;
+        self.volumeBackground.alpha = 1.0f;
+        
+        [self updateVolumeBarColor];
+        
+        if ((newWidth != previousWidth || newWidth >= viewWidth || newWidth <= 0) && !self.dontShowVolumeBar) {
+            volumeBarFrame.origin = CGPointMake(12.0f, 9.0f);
+            volumeBackgroundFrame.origin = CGPointMake(12.0f, 9.0f);
+            
+            [UIView animateWithDuration:0.15f animations:^{
+                self.volumeBar.frame = volumeBarFrame;
+                self.volumeBackground.frame = volumeBackgroundFrame;
+                self.volumeBar.window.windowLevel = UIWindowLevelStatusBar;
+                self.volumeBackground.window.windowLevel = UIWindowLevelStatusBar;
+                
+            }];
+            
+            [self.volumeTimer invalidate];
+            self.volumeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(volumeDone) userInfo:nil repeats:NO];
+        }
+        else {
+            
+            volumeBarFrame.origin = CGPointMake(12.0f, -9.0f);
+            volumeBackgroundFrame.origin = CGPointMake(12.0f, -9.0f);
+            
+            self.volumeBar.frame = volumeBarFrame;
+            self.volumeBackground.frame = volumeBackgroundFrame;
+        }
+    }
 }
 
 - (void) dontShowVolumebar {
@@ -167,12 +234,29 @@
 
 - (void) volumeDone {
     // Hide volumeBar after animation
-    [UIView animateWithDuration:0.35f animations:^{
-        self.volumeBar.alpha = 0;
-        self.volumeBackground.alpha = 0;
-    } completion:^(BOOL finished) {
+    if (self.volumeControlStyle == ABVolumeControlStyleMinimal) {
+        [UIView animateWithDuration:0.35f animations:^{
+            self.volumeBar.alpha = 0;
+            self.volumeBackground.alpha = 0;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    else if (self.volumeControlStyle == ABVolumeControlStyleStatusBar) {
+        CGRect volumeBarFrame = self.volumeBar.frame;
+        CGRect volumeBackgroundFrame = self.volumeBackground.frame;
         
-    }];
+        volumeBarFrame.origin = CGPointMake(12.0f, -9.0f);
+        volumeBackgroundFrame.origin = CGPointMake(12.0f, -9.0f);
+        
+        [UIView animateWithDuration:0.15f animations:^{
+            self.volumeBar.frame = volumeBarFrame;
+            self.volumeBackground.frame = volumeBackgroundFrame;
+            self.volumeBar.window.windowLevel = UIWindowLevelStatusBar-1;
+            self.volumeBackground.window.windowLevel = UIWindowLevelStatusBar-1;
+            
+        }];
+    }
 }
 
 - (void) updateVolumeBarColor {
