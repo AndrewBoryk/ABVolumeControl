@@ -44,11 +44,13 @@
     _volumeControlStyle = volumeControlStyle;
     
     if ([self notNull:self.volumeBar]) {
+        self.volumeBar.window.windowLevel = UIWindowLevelStatusBar-1;
         [self.volumeBar removeFromSuperview];
         self.volumeBar = nil;
     }
     
     if ([self notNull:self.volumeBackground]) {
+        self.volumeBackground.window.windowLevel = UIWindowLevelStatusBar-1;
         [self.volumeBackground removeFromSuperview];
         self.volumeBackground = nil;
     }
@@ -62,21 +64,16 @@
         
         // Initialize volumeBackground
         self.volumeBackground = [[UIView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, 2)];
-        self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
+        self.volumeBackground.backgroundColor = [self colorWithHexString:@"d4d4d4"];
         self.volumeBackground.alpha = 0;
         
         // Initialize volumeBar
         self.volumeBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 2)];
         self.volumeBar.clipsToBounds = NO;
         self.volumeBar.layer.masksToBounds = NO;
-        self.volumeBar.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.volumeBar.layer.shadowOffset = CGSizeMake(0, 0);
-        self.volumeBar.layer.shadowOpacity = 0.5f;
-        self.volumeBar.layer.shadowRadius = 1.0f;
         self.volumeBar.alpha = 0;
         
         // Set default theme
-        self.controlTheme = ABVolumeControlDarkTheme;
         [self updateVolumeBarColor];
         
         // Add views to currentWindow
@@ -90,21 +87,16 @@
     else if (volumeControlStyle == ABVolumeControlStyleStatusBar) {
         // Initialize volumeBackground
         self.volumeBackground = [[UIView alloc] initWithFrame:CGRectMake(12.0f, -9.0f, viewWidth-24.0f, 2.0f)];
-        self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
+        self.volumeBackground.backgroundColor = [self colorWithHexString:@"d4d4d4"];
         self.volumeBackground.alpha = 1.0f;
         
         // Initialize volumeBar
         self.volumeBar = [[UIView alloc] initWithFrame:CGRectMake(12.0f, -9.0f, viewWidth-24.0f, 2.0f)];
         self.volumeBar.clipsToBounds = NO;
         self.volumeBar.layer.masksToBounds = NO;
-        self.volumeBar.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.volumeBar.layer.shadowOffset = CGSizeMake(0, 0);
-        self.volumeBar.layer.shadowOpacity = 0.5f;
-        self.volumeBar.layer.shadowRadius = 1.0f;
         self.volumeBar.alpha = 1.0f;
         
         // Set default theme
-        self.controlTheme = ABVolumeControlDarkTheme;
         [self updateVolumeBarColor];
         
         // Add views to currentWindow
@@ -157,7 +149,7 @@
         
         [self updateVolumeBarColor];
         
-        if ((newWidth != previousWidth || newWidth >= viewWidth || newWidth <= 0) && !self.dontShowVolumeBar) {
+        if (!self.dontShowVolumeBar) {
             
             [UIView animateWithDuration:0.35f animations:^{
                 self.volumeBar.frame = volumeBarFrame;
@@ -194,7 +186,7 @@
         
         [self updateVolumeBarColor];
         
-        if ((newWidth != previousWidth || newWidth >= viewWidth || newWidth <= 0) && !self.dontShowVolumeBar) {
+        if (!self.dontShowVolumeBar) {
             volumeBarFrame.origin = CGPointMake(12.0f, 9.0f);
             volumeBackgroundFrame.origin = CGPointMake(12.0f, 9.0f);
             
@@ -210,7 +202,6 @@
             self.volumeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(volumeDone) userInfo:nil repeats:NO];
         }
         else {
-            
             volumeBarFrame.origin = CGPointMake(12.0f, -9.0f);
             volumeBackgroundFrame.origin = CGPointMake(12.0f, -9.0f);
             
@@ -262,9 +253,18 @@
 - (void) updateVolumeBarColor {
     if (self.controlTheme == ABVolumeControlLightTheme) {
         self.volumeBar.backgroundColor = [self lightColor];
+        self.volumeBackground.backgroundColor = [UIColor darkGrayColor];
     }
-    else {
+    else if (self.controlTheme == ABVolumeControlDarkTheme) {
         self.volumeBar.backgroundColor = [self darkColor];
+        self.volumeBackground.backgroundColor = [self colorWithHexString:@"d4d4d4"];
+    }
+    
+    if ([self notNull:self.volumeBar]) {
+        self.volumeBar.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.volumeBar.layer.shadowOffset = CGSizeMake(0, 0);
+        self.volumeBar.layer.shadowOpacity = 1.0f;
+        self.volumeBar.layer.shadowRadius = 0.25f;
     }
     
 }
@@ -280,7 +280,7 @@
         return self.defaultLightColor;
     }
     
-    return [self colorWithHexString:@"FFFFFF"];
+    return [UIColor whiteColor];
 }
 
 - (UIColor *) darkColor {
@@ -288,8 +288,9 @@
         return self.defaultDarkColor;
     }
     
-    return [self colorWithHexString:@"2ECC71"];
+    return [self colorWithHexString:@"262626"];
 }
+
 - (BOOL)notNull:(id)object {
     if ([object isEqual:[NSNull null]] || [object isKindOfClass:[NSNull class]] || object == nil) {
         return false;

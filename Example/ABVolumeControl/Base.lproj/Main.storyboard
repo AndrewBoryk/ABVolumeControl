@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="whP-gf-Uak">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xS0-cC-EEB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" constant="150" id="PeF-tH-flh"/>
                                 </constraints>
                                 <state key="normal" title="Set Light Theme">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="changeThemeAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="4Zq-az-40Z"/>
@@ -39,7 +39,7 @@
                                     <constraint firstAttribute="width" constant="150" id="bLe-7X-l7Z"/>
                                 </constraints>
                                 <state key="normal" title="Set Minimal Style">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="minimalStyleAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="FhY-5K-Egr"/>
@@ -51,32 +51,80 @@
                                     <constraint firstAttribute="width" constant="150" id="aGv-68-hek"/>
                                 </constraints>
                                 <state key="normal" title="Set Status Bar Style">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="statusBarStyleAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="Zvq-8i-b4C"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navigation Bar Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jC2-dt-806">
+                                <rect key="frame" x="121" y="76" width="133" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.066666666666666666" green="0.066666666666666666" blue="0.066666666666666666" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="jC2-dt-806" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="12" id="CHM-Pu-rS8"/>
                             <constraint firstItem="jvI-aW-UTE" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="F7w-PO-XXv"/>
                             <constraint firstItem="BnV-Kh-jah" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="MSY-K8-cJj"/>
                             <constraint firstItem="jTe-MO-nqp" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="WbD-Uz-Gl3"/>
                             <constraint firstItem="jvI-aW-UTE" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Y4V-h9-Gvj"/>
                             <constraint firstItem="BnV-Kh-jah" firstAttribute="top" secondItem="jvI-aW-UTE" secondAttribute="bottom" constant="8" id="cyn-I9-X8L"/>
+                            <constraint firstItem="jC2-dt-806" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="li6-xh-bN8"/>
                             <constraint firstItem="jvI-aW-UTE" firstAttribute="top" secondItem="jTe-MO-nqp" secondAttribute="bottom" constant="7.5" id="pIA-bK-iaP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="HsV-CQ-tYD">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Hn6-2k-gmJ">
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <segments>
+                                <segment title="Black"/>
+                                <segment title="White"/>
+                            </segments>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="themeSwitchChanged:" destination="whP-gf-Uak" eventType="valueChanged" id="oS7-4n-nWx"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="changeThemeButton" destination="jTe-MO-nqp" id="Vmp-ZO-PWa"/>
                         <outlet property="minimalStyleButton" destination="jvI-aW-UTE" id="u6e-vY-s5O"/>
                         <outlet property="statusBarStyleButton" destination="BnV-Kh-jah" id="Hwe-2W-hNa"/>
+                        <outlet property="themeSwitch" destination="Hn6-2k-gmJ" id="tDL-NP-yo1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="433"/>
+            <point key="canvasLocation" x="1244" y="432.23388305847078"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="XPy-Yn-Sf4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xS0-cC-EEB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1ak-TA-59C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="whP-gf-Uak" kind="relationship" relationship="rootViewController" id="P12-1K-yic"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="10T-hX-1aX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="304.80000000000001" y="432.23388305847078"/>
         </scene>
     </scenes>
 </document>

@@ -19,8 +19,7 @@
 {
     [super viewDidLoad];
     
-    
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    [self themeSwitchChanged:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -38,7 +37,7 @@
     // In addition to setting the controlTheme, the accent colors for the dark and light themes can be set individually
     
     // Custom Dark theme
-    [[ABVolumeControl sharedManager] setDefaultDarkColor:[self colorWithHexString:@"E74C3C"]];
+    [[ABVolumeControl sharedManager] setDefaultDarkColor:[self colorWithHexString:@"3498DB"]];
     
     // Custom Light theme
     [[ABVolumeControl sharedManager] setDefaultLightColor:[self colorWithHexString:@"FCFCFC"]];
@@ -58,31 +57,41 @@
         [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlDarkTheme];
         [self.changeThemeButton setTitle:@"Set Light Theme" forState:UIControlStateNormal];
     }
-    
 }
 
 - (IBAction)minimalStyleAction:(id)sender {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    // Custom Dark theme
+    [[ABVolumeControl sharedManager] setDefaultDarkColor:[self colorWithHexString:@"3498DB"]];
     
+    // Custom Light theme
+    [[ABVolumeControl sharedManager] setDefaultLightColor:[self colorWithHexString:@"FCFCFC"]];
+    
+    // Set the ABVolumeControl style to Minimal
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleMinimal];
-    self.view.backgroundColor = [self colorWithHexString:@"111111"];
-    
-    [self.changeThemeButton setTitleColor:[self colorWithHexString:@"FCFCFC"] forState:UIControlStateNormal];
-    [self.minimalStyleButton setTitleColor:[self colorWithHexString:@"FCFCFC"] forState:UIControlStateNormal];
-    [self.statusBarStyleButton setTitleColor:[self colorWithHexString:@"FCFCFC"] forState:UIControlStateNormal];
-    
 }
 
 - (IBAction)statusBarStyleAction:(id)sender {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+    // Custom Dark theme
+    [[ABVolumeControl sharedManager] setDefaultDarkColor:[self colorWithHexString:@"333333"]];
     
+    // Custom Light theme
+    [[ABVolumeControl sharedManager] setDefaultLightColor:[self colorWithHexString:@"FCFCFC"]];
+    
+    // Set the ABVolumeControl style to Status Bar
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleStatusBar];
-    self.view.backgroundColor = [self colorWithHexString:@"FCFCFC"];
-    
-    [self.changeThemeButton setTitleColor:[self colorWithHexString:@"111111"] forState:UIControlStateNormal];
-    [self.minimalStyleButton setTitleColor:[self colorWithHexString:@"111111"] forState:UIControlStateNormal];
-    [self.statusBarStyleButton setTitleColor:[self colorWithHexString:@"111111"] forState:UIControlStateNormal];
-    
+}
+
+- (IBAction)themeSwitchChanged:(id)sender {
+    if (self.themeSwitch.selectedSegmentIndex == 0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+        self.navigationController.navigationBar.backgroundColor = [self colorWithHexString:@"000000"];
+        self.navigationController.navigationBar.barTintColor = [self colorWithHexString:@"000000"];
+    }
+    else if (self.themeSwitch.selectedSegmentIndex == 1) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
+        self.navigationController.navigationBar.backgroundColor = [self colorWithHexString:@"FCFCFC"];
+        self.navigationController.navigationBar.barTintColor = [self colorWithHexString:@"FCFCFC"];
+    }
 }
 
 - (UIColor*)colorWithHexString:(NSString*)hex

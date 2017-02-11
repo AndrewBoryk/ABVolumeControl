@@ -19,6 +19,9 @@
 /// Button to set volumeControl style to ABVolumeControlStyleStatusBar
 @property (strong, nonatomic) IBOutlet UIButton *statusBarStyleButton;
 
+/// Switch to adjust theme
+@property (strong, nonatomic) IBOutlet UISegmentedControl *themeSwitch;
+
 /// Change the theme between dark and light
 - (IBAction)changeThemeAction:(id)sender;
 
@@ -27,5 +30,8 @@
 
 /// Set volumeControl style to ABVolumeControlStyleStatusBar
 - (IBAction)statusBarStyleAction:(id)sender;
+
+/// Switched themes for ABVolumeControl
+- (IBAction)themeSwitchChanged:(id)sender;
 
 @end
