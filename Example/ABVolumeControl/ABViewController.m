@@ -83,6 +83,11 @@
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleStatusBar];
 }
 
+- (IBAction)customStyleAction:(id)sender {
+    // Set the ABVolumeControl style to Custom
+    [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleCustom];
+}
+
 - (IBAction)themeSwitchChanged:(id)sender {
     if (self.themeSwitch.selectedSegmentIndex == 0) {
         [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];

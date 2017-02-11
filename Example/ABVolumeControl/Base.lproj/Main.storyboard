@@ -33,6 +33,18 @@
                                     <action selector="changeThemeAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="4Zq-az-40Z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWX-eD-Yv8">
+                                <rect key="frame" x="87" y="280.5" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="265-s5-aXa"/>
+                                </constraints>
+                                <state key="normal" title="Remove Volume Control">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="removeStyleAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="rGS-t4-FJ5"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvI-aW-UTE">
                                 <rect key="frame" x="112" y="318.5" width="150" height="30"/>
                                 <constraints>
@@ -63,16 +75,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWX-eD-Yv8">
-                                <rect key="frame" x="87" y="280.5" width="200" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHz-O7-gzM">
+                                <rect key="frame" x="87" y="394.5" width="200" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="265-s5-aXa"/>
+                                    <constraint firstAttribute="width" constant="200" id="uuz-Y4-rCY"/>
                                 </constraints>
-                                <state key="normal" title="Remove Volume Control">
+                                <state key="normal" title="Custom Volume Control">
                                     <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="removeStyleAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="rGS-t4-FJ5"/>
+                                    <action selector="customStyleAction:" destination="whP-gf-Uak" eventType="touchUpInside" id="YHd-WQ-esQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -88,6 +100,8 @@
                             <constraint firstItem="BnV-Kh-jah" firstAttribute="top" secondItem="jvI-aW-UTE" secondAttribute="bottom" constant="8" id="cyn-I9-X8L"/>
                             <constraint firstItem="xWX-eD-Yv8" firstAttribute="top" secondItem="jTe-MO-nqp" secondAttribute="bottom" constant="8" id="eVe-2b-kpa"/>
                             <constraint firstItem="jC2-dt-806" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="li6-xh-bN8"/>
+                            <constraint firstItem="BHz-O7-gzM" firstAttribute="top" secondItem="BnV-Kh-jah" secondAttribute="bottom" constant="8" id="t2E-Yc-D5M"/>
+                            <constraint firstItem="BHz-O7-gzM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="xfl-46-M2i"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HsV-CQ-tYD">
@@ -113,6 +127,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="changeThemeButton" destination="jTe-MO-nqp" id="Vmp-ZO-PWa"/>
+                        <outlet property="customStyleButton" destination="BHz-O7-gzM" id="cNE-FT-Vxa"/>
                         <outlet property="minimalStyleButton" destination="jvI-aW-UTE" id="u6e-vY-s5O"/>
                         <outlet property="removeStyleButton" destination="xWX-eD-Yv8" id="zub-jq-Qut"/>
                         <outlet property="statusBarStyleButton" destination="BnV-Kh-jah" id="Hwe-2W-hNa"/>

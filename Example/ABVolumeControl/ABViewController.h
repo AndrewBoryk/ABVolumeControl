@@ -22,6 +22,9 @@
 /// Button to set volumeControl style to ABVolumeControlStyleStatusBar
 @property (strong, nonatomic) IBOutlet UIButton *statusBarStyleButton;
 
+/// Button to set volumeControl style to ABVolumeControlStyleCustom
+@property (strong, nonatomic) IBOutlet UIButton *customStyleButton;
+
 /// Switch to adjust theme
 @property (strong, nonatomic) IBOutlet UISegmentedControl *themeSwitch;
 
@@ -36,6 +39,9 @@
 
 /// Set volumeControl style to ABVolumeControlStyleStatusBar
 - (IBAction)statusBarStyleAction:(id)sender;
+
+/// Set volumeControl style to ABVolumeControlStyleCustom
+- (IBAction)customStyleAction:(id)sender;
 
 /// Switched themes for ABVolumeControl
 - (IBAction)themeSwitchChanged:(id)sender;
