@@ -15,7 +15,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedMyManager = [[self alloc] init];
-        
     });
     return sharedMyManager;
 }
@@ -125,6 +124,7 @@
     }
 
 }
+
 - (void)handleVolumeChanged:(id)sender
 {
     // Volume changed, show volumeBar
@@ -135,7 +135,7 @@
     if ([self notNull:mainWindow]) {
         if ([self notNull: self.volumeBar] && [self notNull:self.volumeBackground]) {
             if ([mainWindow.subviews containsObject:self.volumeBar] && [mainWindow.subviews containsObject: self.volumeBackground]) {
-                [self updateControlForVolumeChange];
+                [self updateControlForVolumeChange:self.volumeSlider.value];
             }
             else {
                 [self setVolumeControlStyle:self.volumeControlStyle];
@@ -151,7 +151,7 @@
     }
 }
 
-- (void) updateControlForVolumeChange {
+- (void) updateControlForVolumeChange:(float)value {
     UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
     [mainWindow makeKeyAndVisible];
     CGRect windowFrame = mainWindow.bounds;
@@ -164,7 +164,7 @@
         
         CGFloat previousWidth = volumeBarFrame.size.width;
         
-        CGFloat newWidth = self.volumeSlider.value * viewWidth;
+        CGFloat newWidth = value * viewWidth;
         volumeBarFrame.size = CGSizeMake(newWidth, 2);
         
         [self updateVolumeBarColor];
@@ -197,7 +197,7 @@
         
         CGFloat previousWidth = volumeBarFrame.size.width;
         
-        CGFloat newWidth = self.volumeSlider.value * (viewWidth - 24.0f);
+        CGFloat newWidth = value * (viewWidth - 24.0f);
         
         volumeBarFrame.size = CGSizeMake(newWidth, 2.0f);
         

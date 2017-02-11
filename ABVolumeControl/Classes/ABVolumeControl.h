@@ -72,6 +72,9 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 /// Updates color for volumebar
 - (void) updateVolumeBarColor;
 
+/// Updates the control to show a change in volume
+- (void) updateControlForVolumeChange:(float)value;
+
 /// Setting the volume for the ABVolumeControl and the user's device
 + (void) setVolumeLevel:(float)volumeLevel;
 

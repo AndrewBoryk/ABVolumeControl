@@ -95,6 +95,39 @@
     self.customStyleButton.hidden = NO;
 }
 
+- (void) fakeVolumeChange {
+    // Only used to create demo video
+    [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.30f];
+    
+    [NSTimer scheduledTimerWithTimeInterval:0.25f repeats:NO block:^(NSTimer * _Nonnull timer) {
+        [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.45f];
+        
+        [NSTimer scheduledTimerWithTimeInterval:0.25f repeats:NO block:^(NSTimer * _Nonnull timer) {
+            [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.60f];
+            
+            [NSTimer scheduledTimerWithTimeInterval:0.25f repeats:NO block:^(NSTimer * _Nonnull timer) {
+                [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.75f];
+                
+                [NSTimer scheduledTimerWithTimeInterval:0.25f repeats:NO block:^(NSTimer * _Nonnull timer) {
+                    [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.6f];
+                    
+                    [NSTimer scheduledTimerWithTimeInterval:0.25f repeats:NO block:^(NSTimer * _Nonnull timer) {
+                        [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.45f];
+                        
+                        [NSTimer scheduledTimerWithTimeInterval:0.25f repeats:NO block:^(NSTimer * _Nonnull timer) {
+                            [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.3f];
+                            
+                            [NSTimer scheduledTimerWithTimeInterval:0.25f repeats:NO block:^(NSTimer * _Nonnull timer) {
+                                [[ABVolumeControl sharedManager] updateControlForVolumeChange:0.15f];
+                            }];
+                        }];
+                    }];
+                }];
+            }];
+        }];
+    }];
+}
+
 - (IBAction)customStyleAction:(id)sender {
     // Set the ABVolumeControl style to Custom
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleCustom];
