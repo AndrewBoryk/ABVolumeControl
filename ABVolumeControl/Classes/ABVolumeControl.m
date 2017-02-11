@@ -80,8 +80,10 @@
         [currentWindow addSubview:self.volumeBackground];
         [currentWindow addSubview:self.volumeBar];
         
-        if (self.mpVolumeView && currentWindow) {
-            [currentWindow addSubview:self.mpVolumeView];
+        if ([self notNull: self.mpVolumeView] && [self notNull: currentWindow]) {
+            if (![currentWindow.subviews containsObject:self.mpVolumeView]) {
+                [currentWindow addSubview:self.mpVolumeView];
+            }
         }
     }
     else if (volumeControlStyle == ABVolumeControlStyleStatusBar) {
@@ -103,8 +105,22 @@
         [currentWindow addSubview:self.volumeBackground];
         [currentWindow addSubview:self.volumeBar];
         
-        if (self.mpVolumeView && currentWindow) {
-            [currentWindow addSubview:self.mpVolumeView];
+        if ([self notNull: self.mpVolumeView] && [self notNull: currentWindow]) {
+            if (![currentWindow.subviews containsObject:self.mpVolumeView]) {
+                [currentWindow addSubview:self.mpVolumeView];
+            }
+        }
+    }
+    else if (volumeControlStyle == ABVolumeControlStyleNone) {
+        if ([self notNull:self.mpVolumeView]) {
+            [self.mpVolumeView removeFromSuperview];
+        }
+    }
+    else if (volumeControlStyle == ABVolumeControlStyleCustom) {
+        if ([self notNull: self.mpVolumeView] && [self notNull: currentWindow]) {
+            if (![currentWindow.subviews containsObject:self.mpVolumeView]) {
+                [currentWindow addSubview:self.mpVolumeView];
+            }
         }
     }
 

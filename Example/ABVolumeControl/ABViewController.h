@@ -13,6 +13,9 @@
 /// Button to change themes
 @property (strong, nonatomic) IBOutlet UIButton *changeThemeButton;
 
+/// Button to set volumeControl style to ABVolumeControlStyleNone
+@property (strong, nonatomic) IBOutlet UIButton *removeStyleButton;
+
 /// Button to set volumeControl style to ABVolumeControlStyleMinimal
 @property (strong, nonatomic) IBOutlet UIButton *minimalStyleButton;
 
@@ -24,6 +27,9 @@
 
 /// Change the theme between dark and light
 - (IBAction)changeThemeAction:(id)sender;
+
+/// Set volumeControl style to ABVolumeControlStyleNone
+- (IBAction)removeStyleAction:(id)sender;
 
 /// Set volumeControl style to ABVolumeControlStyleMinimal
 - (IBAction)minimalStyleAction:(id)sender;

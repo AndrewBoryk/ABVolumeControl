@@ -25,10 +25,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    // Intialize the ABVolumeControl with a style, without setting the style, there will be no visible ABVolumeControl. In addition, one can remove the custom ABVolumeControl by setting the volumeControlStyle to ABVolumeControlStyleNone.
-    [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleNone];
-    
-    // The first style for an ABVolumeControl is minimal, which is a 2px-tall bar that is visible at the top of the screen above the UIStatusBar.
+    // Intialize the ABVolumeControl with a style, without setting the style, there will be no visible ABVolumeControl. The first style for an ABVolumeControl is minimal, which is a 2px-tall bar that is visible at the top of the screen above the UIStatusBar.
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleMinimal];
     
     // Theme can be set for the ABVolumeControl, with dark and light options.
@@ -57,6 +54,11 @@
         [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlDarkTheme];
         [self.changeThemeButton setTitle:@"Set Light Theme" forState:UIControlStateNormal];
     }
+}
+
+- (IBAction)removeStyleAction:(id)sender {
+    // One can remove the custom ABVolumeControl by setting the volumeControlStyle to ABVolumeControlStyleNone.
+    [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleNone];
 }
 
 - (IBAction)minimalStyleAction:(id)sender {

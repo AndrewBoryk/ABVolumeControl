@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
     ABVolumeControlStyleNone,
     ABVolumeControlStyleMinimal,
     ABVolumeControlStyleStatusBar,
+    ABVolumeControlStyleCustom,
 };
 
 @interface ABVolumeControl : NSObject
