@@ -1,6 +1,7 @@
-# ABVolumeControl
+<p align="center">
+  <img src="https://github.com/AndrewBoryk/ABVolumeControl/blob/master/ABVolumeControlLogo.png" alt="ABVolumeControl custom logo"/>
+</p>
 
-[![CI Status](http://img.shields.io/travis/andrewboryk/ABVolumeControl.svg?style=flat)](https://travis-ci.org/andrewboryk/ABVolumeControl)
 [![Version](https://img.shields.io/cocoapods/v/ABVolumeControl.svg?style=flat)](http://cocoapods.org/pods/ABVolumeControl)
 [![License](https://img.shields.io/cocoapods/l/ABVolumeControl.svg?style=flat)](http://cocoapods.org/pods/ABVolumeControl)
 [![Platform](https://img.shields.io/cocoapods/p/ABVolumeControl.svg?style=flat)](http://cocoapods.org/pods/ABVolumeControl)
@@ -9,7 +10,17 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Screenshots
+
+## Description
+
+A custom volume control that replaces MPVolumeView. There are several styles for ABVolumeControl, along with a delegate for creating one's own custom volume slider.
+
 ## Requirements
+
+* Requires iOS 8.0 or later
+* Requires Automatic Reference Counting (ARC)
+* Requires MediaPlayer framework
 
 ## Installation
 
