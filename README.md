@@ -12,6 +12,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Screenshots
 
+![alt tag](ABVolumeControlScreenshot.gif)
+
 ## Description
 
 A custom volume control that replaces MPVolumeView. There are several styles for ABVolumeControl, along with a delegate for creating one's own custom volume slider.
