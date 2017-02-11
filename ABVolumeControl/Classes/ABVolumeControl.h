@@ -11,6 +11,11 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
 
+typedef NS_ENUM(NSInteger, ABVolumeControlTheme) {
+    ABVolumeControlLightTheme,
+    ABVolumeControlDarkTheme,
+};
+
 @interface ABVolumeControl : NSObject
 
 /// Determines whether volume bar should be shown
@@ -30,6 +35,15 @@
 
 // Timer that when selector is performed, hides volumeBar
 @property (strong, nonatomic) NSTimer *volumeTimer;
+
+/// The default light color for the volume bar
+@property (strong, nonatomic) UIColor *defaultLightColor;
+
+/// The default dark color for the volume bar
+@property (strong, nonatomic) UIColor *defaultDarkColor;
+
+/// Theme for the ABVolumeControl (Light or Dark)
+@property (nonatomic) ABVolumeControlTheme controlTheme;
 
 /// Shared Manager for Volume Manager
 + (id)sharedManager;

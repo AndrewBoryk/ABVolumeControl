@@ -9,5 +9,8 @@
 @import UIKit;
 
 @interface ABViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIButton *changeThemeButton;
+
+- (IBAction)changeThemeAction:(id)sender;
 
 @end

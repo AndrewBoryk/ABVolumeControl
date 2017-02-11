@@ -33,4 +33,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)changeThemeAction:(id)sender {
+    if ([[ABVolumeControl sharedManager] controlTheme] == ABVolumeControlDarkTheme) {
+        [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlLightTheme];
+        self.view.backgroundColor = [UIColor blackColor];
+        [self.changeThemeButton setTitle:@"Set Dark Theme" forState:UIControlStateNormal];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    }
+    else if ([[ABVolumeControl sharedManager] controlTheme] == ABVolumeControlLightTheme) {
+        [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlDarkTheme];
+        self.view.backgroundColor = [UIColor whiteColor];
+        [self.changeThemeButton setTitle:@"Set Light Theme" forState:UIControlStateNormal];
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    }
+}
 @end

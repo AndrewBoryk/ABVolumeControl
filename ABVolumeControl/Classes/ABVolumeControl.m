@@ -35,6 +35,8 @@
         
         self.volumeBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 2)];
         
+        self.controlTheme = ABVolumeControlDarkTheme;
+        
         [self updateVolumeBarColor];
         
         self.volumeBar.clipsToBounds = NO;
@@ -143,9 +145,36 @@
 }
 
 - (void) updateVolumeBarColor {
-    self.volumeBar.backgroundColor = [self colorWithHexString:@"1DCBD0"];
+    if (self.controlTheme == ABVolumeControlLightTheme) {
+        self.volumeBar.backgroundColor = [self lightColor];
+    }
+    else {
+        self.volumeBar.backgroundColor = [self darkColor];
+    }
+    
 }
 
+- (void) setControlTheme:(ABVolumeControlTheme)controlTheme {
+    _controlTheme = controlTheme;
+    
+    [self updateVolumeBarColor];
+}
+
+- (UIColor *) lightColor {
+    if ([self notNull:self.defaultLightColor]) {
+        return self.defaultLightColor;
+    }
+    
+    return [self colorWithHexString:@"FFFFFF"];
+}
+
+- (UIColor *) darkColor {
+    if ([self notNull:self.defaultDarkColor]) {
+        return self.defaultDarkColor;
+    }
+    
+    return [self colorWithHexString:@"2ECC71"];
+}
 - (BOOL)notNull:(id)object {
     if ([object isEqual:[NSNull null]] || [object isKindOfClass:[NSNull class]] || object == nil) {
         return false;
