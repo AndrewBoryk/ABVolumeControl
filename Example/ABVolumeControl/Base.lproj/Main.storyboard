@@ -94,40 +94,9 @@
                                     <action selector="customVolumeSliderChanged:" destination="whP-gf-Uak" eventType="valueChanged" id="kqW-u4-EL2"/>
                                 </connections>
                             </slider>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rc8-Dw-e7Q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="yeH-XB-Jd4"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hk0-YE-my9">
-                                <rect key="frame" x="0.0" y="666" width="375" height="1"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="0zs-Xr-pQC"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oAU-Zi-SIa">
-                                <rect key="frame" x="374" y="0.0" width="1" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1" id="dt7-nA-S45"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hyc-6i-3TU">
-                                <rect key="frame" x="0.0" y="0.0" width="1" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1" id="bmc-mN-x4p"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Hyc-6i-3TU" firstAttribute="top" secondItem="rc8-Dw-e7Q" secondAttribute="top" id="0dG-Xt-hxa"/>
-                            <constraint firstItem="Hyc-6i-3TU" firstAttribute="leading" secondItem="rc8-Dw-e7Q" secondAttribute="leading" id="4Pj-a7-zTk"/>
-                            <constraint firstItem="oAU-Zi-SIa" firstAttribute="top" secondItem="rc8-Dw-e7Q" secondAttribute="top" id="5P7-CI-LUF"/>
                             <constraint firstItem="jvI-aW-UTE" firstAttribute="top" secondItem="xWX-eD-Yv8" secondAttribute="bottom" constant="8" id="Bdg-OC-h6t"/>
                             <constraint firstItem="jC2-dt-806" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" constant="12" id="CHM-Pu-rS8"/>
                             <constraint firstItem="jvI-aW-UTE" firstAttribute="centerY" secondItem="TpU-gO-2f1" secondAttribute="centerY" id="F7w-PO-XXv"/>
@@ -137,23 +106,18 @@
                             <constraint firstAttribute="trailingMargin" secondItem="KDv-ka-3ge" secondAttribute="trailing" id="Wd0-0n-LUy"/>
                             <constraint firstItem="KDv-ka-3ge" firstAttribute="centerY" secondItem="BHz-O7-gzM" secondAttribute="centerY" id="XaM-YU-w72"/>
                             <constraint firstItem="jvI-aW-UTE" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="Y4V-h9-Gvj"/>
-                            <constraint firstItem="oAU-Zi-SIa" firstAttribute="trailing" secondItem="rc8-Dw-e7Q" secondAttribute="trailing" id="YCn-nt-VBG"/>
-                            <constraint firstItem="Hyc-6i-3TU" firstAttribute="bottom" secondItem="Hk0-YE-my9" secondAttribute="bottom" id="cPr-dA-anO"/>
                             <constraint firstItem="BnV-Kh-jah" firstAttribute="top" secondItem="jvI-aW-UTE" secondAttribute="bottom" constant="8" id="cyn-I9-X8L"/>
-                            <constraint firstItem="oAU-Zi-SIa" firstAttribute="bottom" secondItem="Hk0-YE-my9" secondAttribute="bottom" id="dnN-xR-3mc"/>
                             <constraint firstItem="xWX-eD-Yv8" firstAttribute="top" secondItem="jTe-MO-nqp" secondAttribute="bottom" constant="8" id="eVe-2b-kpa"/>
                             <constraint firstItem="KDv-ka-3ge" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leadingMargin" id="ixq-Hk-Qsu"/>
                             <constraint firstItem="jC2-dt-806" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="li6-xh-bN8"/>
                             <constraint firstItem="BHz-O7-gzM" firstAttribute="top" secondItem="BnV-Kh-jah" secondAttribute="bottom" constant="8" id="t2E-Yc-D5M"/>
-                            <constraint firstItem="Hk0-YE-my9" firstAttribute="trailing" secondItem="rc8-Dw-e7Q" secondAttribute="trailing" id="t99-PM-nW8"/>
                             <constraint firstItem="BHz-O7-gzM" firstAttribute="centerX" secondItem="TpU-gO-2f1" secondAttribute="centerX" id="xfl-46-M2i"/>
-                            <constraint firstItem="Hk0-YE-my9" firstAttribute="leading" secondItem="rc8-Dw-e7Q" secondAttribute="leading" id="xi4-92-kGJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="HsV-CQ-tYD">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Hn6-2k-gmJ">
-                            <rect key="frame" x="112.5" y="7" width="150" height="30"/>
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <segments>
