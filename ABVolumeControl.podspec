@@ -9,11 +9,11 @@
 Pod::Spec.new do |s|
   s.name             = 'ABVolumeControl'
   s.version          = '0.1.0'
-  s.summary          = 'A custom volume control that replaces MPVolumeView, with multiple styles available, and a delegate to implement one's own custom volume view'
+  s.summary          = 'A custom volume control that replaces MPVolumeView, with multiple styles available, and a delegate to implement a custom volume view'
 
 
   s.description      = <<-DESC
-ABVolumeControl is a MPVolumeView replacement which offers multiple styles, customizable appearance, and makes for easy implementation of one's own custom volume view with delegate methods.
+ABVolumeControl is a MPVolumeView replacement which offers multiple styles, customizable appearance, and makes for easy implementation of a seperate custom volume view with delegate methods.
                        DESC
 
   s.homepage         = 'https://github.com/andrewboryk/ABVolumeControl'
