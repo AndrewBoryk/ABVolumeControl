@@ -43,7 +43,7 @@ ABVolumeControl is initialized by calling 'setVolumeControlStyle:' on the shared
 // The first style for an ABVolumeControl is minimal, which is a 2px-tall bar that is visible at the top of the screen above the UIStatusBar.
 [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleMinimal];
 
-// Set the ABVolumeControl style to Status Bar style. This syle is similar to the 'minimal' style, with added space between the control and the top of the screen, allowing the control to cover the UIStatusBar. This makes the control more visible.
+// Set the ABVolumeControl style to Status Bar style. This style is similar to the 'minimal' style, with added space between the control and the top of the screen, allowing the control to cover the UIStatusBar. This makes the control more visible.
 [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleStatusBar];
 
 // One can remove the custom ABVolumeControl by setting the volumeControlStyle to ABVolumeControlStyleNone. This would bring back the original MPVolumeView.
