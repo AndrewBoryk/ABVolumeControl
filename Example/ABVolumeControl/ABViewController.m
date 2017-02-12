@@ -28,15 +28,15 @@
     // Intialize the ABVolumeControl with a style, without setting the style, there will be no visible ABVolumeControl. The first style for an ABVolumeControl is minimal, which is a 2px-tall bar that is visible at the top of the screen above the UIStatusBar.
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleMinimal];
     
-    // Theme can be set for the ABVolumeControl, with dark and light options.
+    // Changing the theme of the ABVolumeControl allows for easy access to modifying the appearance of the ABVolumeControl depending on it's surroundings (Dark backgrounds vs Light backgrounds)
     [[ABVolumeControl sharedManager] setControlTheme: ABVolumeControlDarkTheme];
     
     // In addition to setting the controlTheme, the accent colors for the dark and light themes can be set individually
     
-    // Custom Dark theme
+    // Changes the accent color associated with the ABVolumeControlDarkTheme theme
     [[ABVolumeControl sharedManager] setDefaultDarkColor:[self colorWithHexString:@"3498DB"]];
     
-    // Custom Light theme
+    // Changes the accent color associated with the ABVolumeControlLightTheme theme
     [[ABVolumeControl sharedManager] setDefaultLightColor:[self colorWithHexString:@"FCFCFC"]];
     
     // Set delegate for the volume control to be used for custom volume sliders
@@ -88,7 +88,7 @@
     // Custom Light theme
     [[ABVolumeControl sharedManager] setDefaultLightColor:[self colorWithHexString:@"FCFCFC"]];
     
-    // Set the ABVolumeControl style to Status Bar
+    // Set the ABVolumeControl style to Status Bar style. This syle is similar to the 'minimal' style, with added space between the control and the top of the screen, allowing the control to cover the UIStatusBar. This makes the control more visible.
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleStatusBar];
     
     self.customVolumeSlider.hidden = YES;
@@ -129,7 +129,7 @@
 }
 
 - (IBAction)customStyleAction:(id)sender {
-    // Set the ABVolumeControl style to Custom
+    // Setting the volumeControlStyle to custom ensures that the MPVolumeView is not shown, and no ABVolumeControl appears. There is a delegate available to listen to changes in the user's volume, and communicate changes in a custom volume slider to the rest of the application.
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleCustom];
     
     self.customStyleButton.hidden = YES;

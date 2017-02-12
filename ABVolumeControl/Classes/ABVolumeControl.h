@@ -63,10 +63,10 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 /// Shared Manager for Volume Manager
 + (id)sharedManager;
 
-/// Hides volume bar for 2.5 seconds
+/// Ensures that the ABVolumeControl will not be shown for 1 second time, and hides it immediately
 - (void) dontShowVolumebar;
 
-/// Shows volume bar
+/// Displays the ABVolumeControl with animation
 - (void) showVolumeBar;
 
 /// Updates color for volumebar
@@ -84,7 +84,7 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 
 @optional
 
-/// Volume did change to a different percentage
+/// Volume did change in the ABVolumeControl to the value 'volumePercentage' (0.0 - 1.0)
 - (void)control:(ABVolumeControl *)control didChangeVolume:(CGFloat)volumePercentage;
 
 @end
