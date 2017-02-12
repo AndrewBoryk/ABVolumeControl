@@ -76,7 +76,7 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 - (void) updateControlForVolumeChange:(float)value;
 
 /// Setting the volume for the ABVolumeControl and the user's device
-+ (void) setVolumeLevel:(float)volumeLevel;
+- (void) setVolumeLevel:(float)volumeLevel;
 
 @end
 

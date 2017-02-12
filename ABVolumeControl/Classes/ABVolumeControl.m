@@ -311,7 +311,7 @@
     return [self colorWithHexString:@"262626"];
 }
 
-+ (void) setVolumeLevel:(float)volumeLevel {
+- (void) setVolumeLevel:(float)volumeLevel {
     if (volumeLevel < 0) {
         volumeLevel = 0;
     }
@@ -319,7 +319,11 @@
         volumeLevel = 1;
     }
     
-    [[MPMusicPlayerController applicationMusicPlayer] setVolume:volumeLevel];
+    if ([self notNull: self.volumeSlider]) {
+        
+        [self.volumeSlider setValue:volumeLevel animated:NO];
+        [self.volumeSlider sendActionsForControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 - (BOOL)notNull:(id)object {

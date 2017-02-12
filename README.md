@@ -74,10 +74,10 @@ In addition to setting the controlTheme, the accent colors for the dark and ligh
 [[ABVolumeControl sharedManager] setDefaultLightColor:[UIColor yellowColor]];
 ```
 
-The volume of the user's device can be adjusted progamically with the call of the class method 'setVolumeLevel:'.
+The volume of the user's device can be adjusted progamically by calling the method 'setVolumeLevel:' on the sharedManager.
 
 ```objective-c
-[ABVolumeControl setVolumeLevel:0.5f];
+[[ABVolumeControl sharedManager] setVolumeLevel:0.5f];
 ```
 
 The volume bar can be manually hidden and shown using the 'dontShowVolumebar' and 'showVolumeBar' methods. 'dontShowVolumeBar' hides the ABVolumeControl immediately, and ensures that it won't be shown for 1 second after being called. 'showVolumeBar' displays the ABVolumeControl with animation. There is also a variable 'dontShowVolumeBar' that sets the ABVolumeControl not to show indefinitely.

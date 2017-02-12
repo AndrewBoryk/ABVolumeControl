@@ -138,7 +138,7 @@
 }
 
 - (IBAction)customVolumeSliderChanged:(id)sender {
-    [ABVolumeControl setVolumeLevel:self.customVolumeSlider.value];
+    [[ABVolumeControl sharedManager] setVolumeLevel:self.customVolumeSlider.value];
 }
 
 - (IBAction)themeSwitchChanged:(id)sender {
