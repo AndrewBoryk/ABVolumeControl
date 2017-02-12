@@ -88,7 +88,7 @@
     // Custom Light theme
     [[ABVolumeControl sharedManager] setDefaultLightColor:[self colorWithHexString:@"FCFCFC"]];
     
-    // Set the ABVolumeControl style to Status Bar style. This syle is similar to the 'minimal' style, with added space between the control and the top of the screen, allowing the control to cover the UIStatusBar. This makes the control more visible.
+    // Set the ABVolumeControl style to Status Bar style. This style is similar to the 'minimal' style, with added space between the control and the top of the screen, allowing the control to cover the UIStatusBar. This makes the control more visible.
     [[ABVolumeControl sharedManager] setVolumeControlStyle:ABVolumeControlStyleStatusBar];
     
     self.customVolumeSlider.hidden = YES;
