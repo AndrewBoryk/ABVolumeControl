@@ -193,8 +193,6 @@
         CGRect volumeBarFrame = self.volumeBar.frame;
         CGRect volumeBackgroundFrame = self.volumeBackground.frame;
         
-        CGFloat previousWidth = volumeBarFrame.size.width;
-        
         CGFloat newWidth = value * (viewWidth - 24.0f);
         
         volumeBarFrame.size = CGSizeMake(newWidth, 2.0f);
