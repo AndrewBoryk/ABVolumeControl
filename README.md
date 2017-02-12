@@ -57,14 +57,14 @@ ABVolumeControl is initialized by calling 'setVolumeControlStyle:' on the shared
 ***
 ## Customization
 
-There are settings available for modifying the appearance of 
+There are settings available for modifying the appearance of an ABVolumeControl, allowing the change of color for the ABVolumeControl easily.
 
 ```objective-c
 // Changing the theme of the ABVolumeControl allows for easy access to modifying the appearance of the ABVolumeControl depending on it's surroundings (Dark backgrounds vs Light backgrounds)
 [[ABVolumeControl sharedManager] setControlTheme: ABVolumeControlDarkTheme];
 ```
 
-In addition to setting the controlTheme, the accent colors for the dark and light themes can be set individually
+In addition to setting the controlTheme, the accent colors for the dark and light themes can be set individually.
 
 ```objective-c
 // Changes the accent color associated with the ABVolumeControlDarkTheme theme
@@ -74,13 +74,47 @@ In addition to setting the controlTheme, the accent colors for the dark and ligh
 [[ABVolumeControl sharedManager] setDefaultLightColor:[UIColor yellowColor]];
 ```
 
+The volume of the user's device can be adjusted progamically with the call of the class method 'setVolumeLevel:'.
+
+```objective-c
+[ABVolumeControl setVolumeLevel:0.5f];
+```
+
+The volume bar can be manually hidden and shown using the 'dontShowVolumebar' and 'showVolumeBar' methods. 'dontShowVolumeBar' hides the ABVolumeControl immediately, and ensures that it won't be shown for 1 second after being called. 'showVolumeBar' displays the ABVolumeControl with animation. There is also a variable 'dontShowVolumeBar' that sets the ABVolumeControl not to show indefinitely.
+
+```objective-c
+// Ensures that the ABVolumeControl will not be shown for 1 second time, and hides it immediately
+[[ABVolumeControl sharedManager] dontShowVolumeBar];
+
+// Displays the ABVolumeControl with animation
+[[ABVolumeControl sharedManager] showVolumeBar];
+
+// Makes sure that the ABVolumeControl will not be displayed until specified otherwise.
+[[ABVolumeControl sharedManager] setDontShowVolumeBar: YES];
+```
+
+
 ***
 ## Delegate
 
+When using ABVolumeControlStyleCustom or just looking to monitor the current volume level of the user's device easily, you can use the delegate provided:
+
+```objective-c
+// Set delegate for the volume control to be used for custom volume sliders
+[[ABVolumeControl sharedManager] setVolumeDelegate:self];
+    
+// Volume did change in the ABVolumeControl to the value 'volumePercentage' (0.0 - 1.0)
+- (void)control:(ABVolumeControl *)control didChangeVolume:(CGFloat)volumePercentage;
+```
 
 ## Author
 
 andrewboryk, andrewcboryk@gmail.com
+
+Reach out to me on Twitter [![alt text][1.2]][1]
+
+[1.2]: http://i.imgur.com/wWzX9uB.png (twitter icon without padding)
+[1]: http://www.twitter.com/trepislife
 
 ## License
 
