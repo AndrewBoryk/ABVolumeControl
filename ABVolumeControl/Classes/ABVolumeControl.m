@@ -123,6 +123,13 @@
         }
     }
 
+    if ([self notNull:self.volumeBackground]) {
+        [self.volumeBackground.superview bringSubviewToFront:self.volumeBackground];
+    }
+    
+    if ([self notNull:self.volumeBar]) {
+        [self.volumeBar.superview bringSubviewToFront:self.volumeBar];
+    }
 }
 
 - (void)handleVolumeChanged:(id)sender
@@ -224,6 +231,14 @@
             self.volumeBar.frame = volumeBarFrame;
             self.volumeBackground.frame = volumeBackgroundFrame;
         }
+    }
+    
+    if ([self notNull:self.volumeBackground]) {
+        [self.volumeBackground.superview bringSubviewToFront:self.volumeBackground];
+    }
+    
+    if ([self notNull:self.volumeBar]) {
+        [self.volumeBar.superview bringSubviewToFront:self.volumeBar];
     }
 }
 
