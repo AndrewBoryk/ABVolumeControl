@@ -259,7 +259,7 @@
     }
 }
 
-- (void) dontShowVolumebar {
+- (void) hideVolumeControl {
     if ([self.volumeDelegate respondsToSelector:@selector(controlWillDismiss:)]) {
         [self.volumeDelegate controlWillDismiss:self];
     }
@@ -273,6 +273,91 @@
     }
     
     [self performSelector:@selector(showVolumeBar) withObject:nil afterDelay:1.0f];
+}
+
+- (void) showVolumeControl {
+    UIWindow *mainWindow = [UIApplication sharedApplication].keyWindow;
+    [mainWindow makeKeyAndVisible];
+    CGRect windowFrame = mainWindow.bounds;
+    CGFloat viewWidth = windowFrame.size.width;
+    
+    if (self.volumeControlStyle == ABVolumeControlStyleMinimal) {
+        
+        self.volumeBackground.frame = CGRectMake(0, 0, viewWidth, 2);
+        
+        CGRect volumeBarFrame = self.volumeBar.frame;
+        
+        [self updateVolumeBarColor];
+        
+        if (!self.volumeControlHidden) {
+            if ([self.volumeDelegate respondsToSelector:@selector(controlWillPresent:)]) {
+                [self.volumeDelegate controlWillPresent:self];
+            }
+            
+            [UIView animateWithDuration:0.35f animations:^{
+                self.volumeBar.frame = volumeBarFrame;
+                self.volumeBar.alpha = 0.75f;
+                self.volumeBackground.alpha = 1.0f;
+                
+            } completion:^(BOOL finished) {
+                if ([self.volumeDelegate respondsToSelector:@selector(controlDidPresent:)]) {
+                    [self.volumeDelegate controlDidPresent:self];
+                }
+            }];
+            
+            [self.volumeTimer invalidate];
+            self.volumeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(volumeDone) userInfo:nil repeats:NO];
+        }
+        else {
+            
+            self.volumeBar.alpha = 0;
+            self.volumeBackground.alpha = 0;
+            self.volumeBar.frame = volumeBarFrame;
+        }
+    }
+    else if (self.volumeControlStyle == ABVolumeControlStyleStatusBar) {
+        
+        self.volumeBackground.frame = CGRectMake(12.0f, self.volumeBackground.frame.origin.y, viewWidth-24.0f, 2.0f);
+        
+        CGRect volumeBarFrame = self.volumeBar.frame;
+        CGRect volumeBackgroundFrame = self.volumeBackground.frame;
+        
+        self.volumeBar.alpha = 1.0f;
+        self.volumeBackground.alpha = 1.0f;
+        
+        [self updateVolumeBarColor];
+        
+        if (!self.volumeControlHidden) {
+            volumeBarFrame.origin = CGPointMake(12.0f, 9.0f);
+            volumeBackgroundFrame.origin = CGPointMake(12.0f, 9.0f);
+            
+            if ([self.volumeDelegate respondsToSelector:@selector(controlWillPresent:)]) {
+                [self.volumeDelegate controlWillPresent:self];
+            }
+            
+            [UIView animateWithDuration:0.15f animations:^{
+                self.volumeBar.frame = volumeBarFrame;
+                self.volumeBackground.frame = volumeBackgroundFrame;
+                self.volumeBar.window.windowLevel = UIWindowLevelStatusBar;
+                self.volumeBackground.window.windowLevel = UIWindowLevelStatusBar;
+                
+            } completion:^(BOOL finished) {
+                if ([self.volumeDelegate respondsToSelector:@selector(controlDidPresent:)]) {
+                    [self.volumeDelegate controlDidPresent:self];
+                }
+            }];
+            
+            [self.volumeTimer invalidate];
+            self.volumeTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(volumeDone) userInfo:nil repeats:NO];
+        }
+        else {
+            volumeBarFrame.origin = CGPointMake(12.0f, -9.0f);
+            volumeBackgroundFrame.origin = CGPointMake(12.0f, -9.0f);
+            
+            self.volumeBar.frame = volumeBarFrame;
+            self.volumeBackground.frame = volumeBackgroundFrame;
+        }
+    }
 }
 
 - (void) showVolumeBar {
