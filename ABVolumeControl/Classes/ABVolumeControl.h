@@ -30,8 +30,8 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 /// Delegate for ABVolumeControl
 @property (weak, nonatomic) id<ABVolumeControlDelegate> volumeDelegate;
 
-/// Determines whether volume bar should be shown
-@property BOOL dontShowVolumeBar;
+/// Determines whether volume control should be hidden
+@property BOOL volumeControlHidden;
 
 /// Background for volume bar
 @property (strong, nonatomic) UIView *volumeBackground;
@@ -64,10 +64,10 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 + (id)sharedManager;
 
 /// Ensures that the ABVolumeControl will not be shown for 1 second time, and hides it immediately
-- (void) dontShowVolumebar;
+- (void) hideVolumeControl;
 
 /// Displays the ABVolumeControl with animation
-- (void) showVolumeBar;
+- (void) showVolumeControl;
 
 /// Updates color for volumebar
 - (void) updateVolumeBarColor;

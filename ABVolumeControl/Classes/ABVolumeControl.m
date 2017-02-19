@@ -176,7 +176,7 @@
         
         [self updateVolumeBarColor];
         
-        if (!self.dontShowVolumeBar) {
+        if (!self.volumeControlHidden) {
             if ([self.volumeDelegate respondsToSelector:@selector(controlWillPresent:)]) {
                 [self.volumeDelegate controlWillPresent:self];
             }
@@ -218,7 +218,7 @@
         
         [self updateVolumeBarColor];
         
-        if (!self.dontShowVolumeBar) {
+        if (!self.volumeControlHidden) {
             volumeBarFrame.origin = CGPointMake(12.0f, 9.0f);
             volumeBackgroundFrame.origin = CGPointMake(12.0f, 9.0f);
             
@@ -266,7 +266,7 @@
     
     self.volumeBar.alpha = 0;
     self.volumeBackground.alpha = 0;
-    self.dontShowVolumeBar = true;
+    self.volumeControlHidden = true;
     
     if ([self.volumeDelegate respondsToSelector:@selector(controlDidDismiss:)]) {
         [self.volumeDelegate controlDidDismiss:self];
@@ -276,7 +276,7 @@
 }
 
 - (void) showVolumeBar {
-    self.dontShowVolumeBar = false;
+    self.volumeControlHidden = false;
 }
 
 - (void) volumeDone {
