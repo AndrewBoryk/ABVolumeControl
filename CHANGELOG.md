@@ -4,6 +4,7 @@
 
 ####Fixed:
 * Issue where ABVolumeControl was sometimes not displayed over other subviews in the key UIWindow.
+* 'showVolumeControl' (formerly public function 'showVolumeBar') now shows the volumeControl immediately. Previously it just negated 'volumeControlHidden' (formerly variable 'dontShowVolumeBar').
 
 ####Updated:
 * The following functions and variable were renamed for clarity, and still have the purpose:
