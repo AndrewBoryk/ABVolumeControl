@@ -97,7 +97,7 @@ The volume bar can be manually hidden and shown using the 'dontShowVolumebar' an
 ***
 ## Delegate
 
-When using ABVolumeControlStyleCustom or just looking to monitor the current volume level of the user's device easily, you can use the delegate provided:
+When using ABVolumeControlStyleCustom or just looking to monitor the current volume level of the user's device easily, one can use the following delegate:
 
 ```objective-c
 // Set delegate for the volume control to be used for custom volume sliders
@@ -107,11 +107,27 @@ When using ABVolumeControlStyleCustom or just looking to monitor the current vol
 - (void)control:(ABVolumeControl *)control didChangeVolume:(CGFloat)volumePercentage;
 ```
 
+Also, when looking to know when the volumeControl will/did present and dismiss, delegate methods have been provided. These methods are called for ABVolumeControlStyleMinimal and ABVolumeControlStyleStatusBar.
+
+```objective-c
+// ABVolumeControl will be displayed
+- (void)controlWillPresent:(ABVolumeControl *)control;
+
+// ABVolumeControl was displayed
+- (void)controlDidPresent:(ABVolumeControl *)control;
+
+// ABVolumeControl will be dismissed
+- (void)controlWillDismiss:(ABVolumeControl *)control;
+
+// ABVolumeControl was dismissed
+- (void)controlDidDismiss:(ABVolumeControl *)control;
+```  
+
 ## Author
 
 andrewboryk, andrewcboryk@gmail.com
 
-Reach out to me on Twitter [![alt text][1.2]][1]
+Reach out to me on Twitter [@TrepIsLife](https://www.twitter.com/TrepIsLife) [![alt text][1.2]][1]
 
 [1.2]: http://i.imgur.com/wWzX9uB.png (twitter icon without padding)
 [1]: http://www.twitter.com/trepislife
