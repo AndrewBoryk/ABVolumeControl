@@ -87,4 +87,15 @@ typedef NS_ENUM(NSInteger, ABVolumeControlStyle) {
 /// Volume did change in the ABVolumeControl to the value 'volumePercentage' (0.0 - 1.0)
 - (void)control:(ABVolumeControl *)control didChangeVolume:(CGFloat)volumePercentage;
 
+/// ABVolumeControl will be displayed
+- (void)controlWillPresent:(ABVolumeControl *)control;
+
+/// ABVolumeControl was displayed
+- (void)controlDidPresent:(ABVolumeControl *)control;
+
+/// ABVolumeControl will be dismissed
+- (void)controlWillDismiss:(ABVolumeControl *)control;
+
+/// ABVolumeControl was dismissed
+- (void)controlDidDismiss:(ABVolumeControl *)control;
 @end

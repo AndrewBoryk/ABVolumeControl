@@ -159,6 +159,22 @@
     [self.customVolumeSlider setValue:volumePercentage];
 }
 
+- (void) controlWillPresent:(ABVolumeControl *)control {
+    NSLog(@"Control will present");
+}
+
+- (void) controlDidPresent:(ABVolumeControl *)control {
+    NSLog(@"Control did present");
+}
+
+- (void) controlWillDismiss:(ABVolumeControl *)control {
+    NSLog(@"Control will dismiss");
+}
+
+- (void) controlDidDismiss:(ABVolumeControl *)control {
+    NSLog(@"Control did dismiss");
+}
+
 #pragma mark - Helper Methods
 - (UIColor*)colorWithHexString:(NSString*)hex
 {
