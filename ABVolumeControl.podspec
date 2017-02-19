@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ABVolumeControl'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'A custom volume control that replaces MPVolumeView, with multiple styles available, and a delegate to implement a custom volume view'
 
 
@@ -21,7 +21,7 @@ ABVolumeControl is a MPVolumeView replacement which offers multiple styles, cust
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'andrewboryk' => 'andrewcboryk@gmail.com' }
   s.source           = { :git => 'https://github.com/andrewboryk/ABVolumeControl.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/trepislife'
+  s.social_media_url = 'https://twitter.com/TrepIsLife'
 
   s.ios.deployment_target = '8.0'
 
