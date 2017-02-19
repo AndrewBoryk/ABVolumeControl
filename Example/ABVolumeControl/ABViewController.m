@@ -20,6 +20,8 @@
     [super viewDidLoad];
     
     [self themeSwitchChanged:nil];
+        
+    [[ABVolumeControl sharedManager] hideVolumeControl];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -57,6 +59,8 @@
         [[ABVolumeControl sharedManager] setControlTheme:ABVolumeControlDarkTheme];
         [self.changeThemeButton setTitle:@"Set Light Theme" forState:UIControlStateNormal];
     }
+    
+    [[ABVolumeControl sharedManager] showVolumeControl];
 }
 
 - (IBAction)removeStyleAction:(id)sender {
@@ -79,6 +83,8 @@
     
     self.customVolumeSlider.hidden = YES;
     self.customStyleButton.hidden = NO;
+    
+    [[ABVolumeControl sharedManager] showVolumeControl];
 }
 
 - (IBAction)statusBarStyleAction:(id)sender {
@@ -93,6 +99,8 @@
     
     self.customVolumeSlider.hidden = YES;
     self.customStyleButton.hidden = NO;
+    
+    [[ABVolumeControl sharedManager] showVolumeControl];
 }
 
 - (void) fakeVolumeChange {
@@ -152,6 +160,8 @@
         self.navigationController.navigationBar.backgroundColor = [self colorWithHexString:@"FCFCFC"];
         self.navigationController.navigationBar.barTintColor = [self colorWithHexString:@"FCFCFC"];
     }
+    
+    [[ABVolumeControl sharedManager] showVolumeControl];
 }
 
 #pragma mark - ABVolumeControlDelegate methods
