@@ -80,17 +80,17 @@ The volume of the user's device can be adjusted progamically by calling the meth
 [[ABVolumeControl sharedManager] setVolumeLevel:0.5f];
 ```
 
-The volume bar can be manually hidden and shown using the 'dontShowVolumebar' and 'showVolumeBar' methods. 'dontShowVolumeBar' hides the ABVolumeControl immediately, and ensures that it won't be shown for 1 second after being called. 'showVolumeBar' displays the ABVolumeControl with animation. There is also a variable 'dontShowVolumeBar' that sets the ABVolumeControl not to show indefinitely.
+The volume bar can be manually hidden and shown using the 'hideVolumeControl' and 'showVolumeControl' methods. 'hideVolumeControl' hides the ABVolumeControl immediately, and ensures that it won't be shown for 1 second after being called. 'showVolumeControl' displays the ABVolumeControl with animation. There is also a variable 'volumeControlHidden' that sets the ABVolumeControl not to show indefinitely, until specified otherwise.
 
 ```objective-c
 // Ensures that the ABVolumeControl will not be shown for 1 second time, and hides it immediately
-[[ABVolumeControl sharedManager] dontShowVolumeBar];
+[[ABVolumeControl sharedManager] hideVolumeControl];
 
 // Displays the ABVolumeControl with animation
-[[ABVolumeControl sharedManager] showVolumeBar];
+[[ABVolumeControl sharedManager] showVolumeControl];
 
 // Makes sure that the ABVolumeControl will not be displayed until specified otherwise.
-[[ABVolumeControl sharedManager] setDontShowVolumeBar: YES];
+[[ABVolumeControl sharedManager] setVolumeControlHidden: YES];
 ```
 
 
