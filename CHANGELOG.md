@@ -1,4 +1,4 @@
-##(Unreleased)
+##v0.1.1 (2/19/17)
 ####Added:
 * Delegate methods for knowing when ABVolumeControl of stype Minimal and StatusBar will/did present and dismiss.
 
