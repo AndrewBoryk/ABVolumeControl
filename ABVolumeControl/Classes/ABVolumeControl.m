@@ -43,13 +43,17 @@
     _volumeControlStyle = volumeControlStyle;
     
     if ([self notNull:self.volumeBar]) {
-        self.volumeBar.window.windowLevel = UIWindowLevelStatusBar-1;
+        if (self.volumeBar.window.windowLevel == UIWindowLevelStatusBar) {
+            self.volumeBar.window.windowLevel--;
+        }
         [self.volumeBar removeFromSuperview];
         self.volumeBar = nil;
     }
     
     if ([self notNull:self.volumeBackground]) {
-        self.volumeBackground.window.windowLevel = UIWindowLevelStatusBar-1;
+        if (self.volumeBackground.window.windowLevel == UIWindowLevelStatusBar) {
+            self.volumeBackground.window.windowLevel--;
+        }
         [self.volumeBackground removeFromSuperview];
         self.volumeBackground = nil;
     }
